@@ -26589,15 +26589,23 @@
 	'use strict';
 
 	var React = __webpack_require__(1);
+	var WeatherForm = __webpack_require__(234);
+	var WeatherMessage = __webpack_require__(235);
 
 	var Weather = React.createClass({
 	  displayName: 'Weather',
 
 	  render: function render() {
 	    return React.createElement(
-	      'h3',
+	      'div',
 	      null,
-	      'Weather Component'
+	      React.createElement(
+	        'h3',
+	        null,
+	        'Weather Component'
+	      ),
+	      React.createElement(WeatherForm, null),
+	      React.createElement(WeatherMessage, { city: "Tokyo" })
 	    );
 	  }
 	});
@@ -26647,6 +26655,57 @@
 	});
 
 	module.exports = Examples;
+
+/***/ },
+/* 234 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var React = __webpack_require__(1);
+
+	var WeatherForm = React.createClass({
+	  displayName: "WeatherForm",
+
+	  render: function render() {
+	    return React.createElement(
+	      "form",
+	      null,
+	      React.createElement("input", { type: "text", placeholder: "Enter city name" }),
+	      React.createElement(
+	        "button",
+	        null,
+	        "Get weather"
+	      )
+	    );
+	  }
+	});
+
+	module.exports = WeatherForm;
+
+/***/ },
+/* 235 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(1);
+
+	var WeatherMessage = React.createClass({
+	  displayName: 'WeatherMessage',
+
+	  render: function render() {
+	    return React.createElement(
+	      'p',
+	      null,
+	      'The weather is currently 23 degrees in ',
+	      this.props.city,
+	      '.'
+	    );
+	  }
+	});
+
+	module.exports = WeatherMessage;
 
 /***/ }
 /******/ ]);
