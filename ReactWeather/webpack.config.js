@@ -11,6 +11,7 @@ module.exports = {
       Examples: 'app/components/Examples.jsx',
       Main: 'app/components/Main.jsx',
       Nav: 'app/components/Nav.jsx',
+      OpenWeatherMap: 'app/api/OpenWeatherMap.jsx',
       Weather: 'app/components/Weather.jsx',
       WeatherForm: 'app/components/WeatherForm.jsx',
       WeatherMessage: 'app/components/WeatherMessage.jsx'
