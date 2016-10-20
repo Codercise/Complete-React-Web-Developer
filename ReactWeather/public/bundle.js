@@ -27301,7 +27301,7 @@
 	      if (isLoading) {
 	        return React.createElement(
 	          'h3',
-	          null,
+	          { className: 'text-centered' },
 	          'Fetching weather...'
 	        );
 	      } else if (temp && location) {
@@ -27313,8 +27313,8 @@
 	      'div',
 	      null,
 	      React.createElement(
-	        'h3',
-	        null,
+	        'h1',
+	        { className: 'text-centered' },
 	        'Weather Component'
 	      ),
 	      React.createElement(WeatherForm, { onSearch: this.handleSearch }),
@@ -28725,7 +28725,7 @@
 	      React.createElement('input', { ref: 'location', type: 'text', placeholder: 'Enter city name' }),
 	      React.createElement(
 	        'button',
-	        null,
+	        { className: 'button expanded hollow' },
 	        'Get weather'
 	      )
 	    );
@@ -28738,7 +28738,7 @@
 /* 269 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	var React = __webpack_require__(8);
 
@@ -28747,13 +28747,13 @@
 	  var location = _ref.location;
 
 	  return React.createElement(
-	    'h3',
-	    null,
-	    'The weather is currently ',
+	    "h3",
+	    { className: "text-centered" },
+	    "The weather is currently ",
 	    temp,
-	    ' degrees in ',
+	    " degrees in ",
 	    location,
-	    '.'
+	    "."
 	  );
 	};
 
@@ -28763,23 +28763,59 @@
 /* 270 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	var React = __webpack_require__(8);
 
 	var About = function About(props) {
 	  return React.createElement(
-	    'div',
+	    "div",
 	    null,
 	    React.createElement(
-	      'h3',
-	      null,
-	      'About Component'
+	      "h1",
+	      { className: "text-centered" },
+	      "About"
 	    ),
 	    React.createElement(
-	      'p',
+	      "p",
 	      null,
-	      'Welcome to the about page for my React Weather App'
+	      "Welcome to the about page for my React Weather App"
+	    ),
+	    React.createElement(
+	      "p",
+	      null,
+	      "Tools and relevant links:"
+	    ),
+	    React.createElement(
+	      "ul",
+	      null,
+	      React.createElement(
+	        "li",
+	        null,
+	        React.createElement(
+	          "a",
+	          { href: "https://facebook.github.io/react" },
+	          "React"
+	        )
+	      ),
+	      React.createElement(
+	        "li",
+	        null,
+	        React.createElement(
+	          "a",
+	          { href: "https://openweathermap.org" },
+	          "Open Weather Map API"
+	        )
+	      ),
+	      React.createElement(
+	        "li",
+	        null,
+	        React.createElement(
+	          "a",
+	          { href: "https://github.com/Haydos585/Complete-React-Web-Developer" },
+	          "GitHub Repo"
+	        )
+	      )
 	    )
 	  );
 	};
@@ -28806,7 +28842,7 @@
 	    React.createElement(
 	      'h1',
 	      { className: 'text-center' },
-	      'Examples Component'
+	      'Examples'
 	    ),
 	    React.createElement(
 	      'p',
