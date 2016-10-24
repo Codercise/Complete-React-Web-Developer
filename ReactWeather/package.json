@@ -9,7 +9,7 @@
   "author": "Nick Hayden",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.14.0",
+    "axios": "^0.9.1",
     "express": "^4.14.0",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
