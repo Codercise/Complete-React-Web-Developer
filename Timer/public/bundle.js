@@ -107,11 +107,11 @@
 	var Timer = __webpack_require__(244);
 	var Countdown = __webpack_require__(245);
 
-	__webpack_require__(246);
+	__webpack_require__(247);
 	$(document).foundation();
 
 	// App CSS
-	__webpack_require__(250);
+	__webpack_require__(251);
 
 	ReactDOM.render(React.createElement(
 	  Router,
@@ -27285,15 +27285,16 @@
 	'use strict';
 
 	var React = __webpack_require__(8);
+	var Clock = __webpack_require__(246);
 
 	var Countdown = React.createClass({
 	  displayName: 'Countdown',
 
 	  render: function render() {
 	    return React.createElement(
-	      'p',
+	      'div',
 	      null,
-	      'Countdown.jsx'
+	      React.createElement(Clock, { totalSeconds: 129 })
 	    );
 	  }
 	});
@@ -27304,13 +27305,64 @@
 /* 246 */
 /***/ function(module, exports, __webpack_require__) {
 
+	"use strict";
+
+	var React = __webpack_require__(8);
+
+	var Clock = React.createClass({
+	  displayName: "Clock",
+
+	  getDefaultProps: function getDefaultProps() {
+	    return {
+	      totalSeconds: 0
+	    };
+	  },
+	  propTypes: {
+	    totalSeconds: React.PropTypes.number
+	  },
+	  formatSeconds: function formatSeconds(totalSeconds) {
+	    var seconds = totalSeconds % 60;
+	    var minutes = Math.floor(totalSeconds / 60);
+
+	    if (seconds < 10) {
+	      seconds = "0" + seconds;
+	    }
+
+	    if (minutes < 10) {
+	      minutes = "0" + minutes;
+	    }
+
+	    return minutes + ":" + seconds;
+	  },
+	  render: function render() {
+	    var totalSeconds = this.props.totalSeconds;
+
+
+	    return React.createElement(
+	      "div",
+	      { className: "clock" },
+	      React.createElement(
+	        "span",
+	        { className: "clock-text" },
+	        this.formatSeconds(totalSeconds)
+	      )
+	    );
+	  }
+	});
+
+	module.exports = Clock;
+
+/***/ },
+/* 247 */
+/***/ function(module, exports, __webpack_require__) {
+
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(247);
+	var content = __webpack_require__(248);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(249)(content, {});
+	var update = __webpack_require__(250)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -27327,10 +27379,10 @@
 	}
 
 /***/ },
-/* 247 */
+/* 248 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(248)();
+	exports = module.exports = __webpack_require__(249)();
 	// imports
 
 
@@ -27341,7 +27393,7 @@
 
 
 /***/ },
-/* 248 */
+/* 249 */
 /***/ function(module, exports) {
 
 	/*
@@ -27397,7 +27449,7 @@
 
 
 /***/ },
-/* 249 */
+/* 250 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -27649,16 +27701,16 @@
 
 
 /***/ },
-/* 250 */
+/* 251 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(251);
+	var content = __webpack_require__(252);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(249)(content, {});
+	var update = __webpack_require__(250)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -27675,15 +27727,15 @@
 	}
 
 /***/ },
-/* 251 */
+/* 252 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(248)();
+	exports = module.exports = __webpack_require__(249)();
 	// imports
 
 
 	// module
-	exports.push([module.id, "p {\n  color: #777; }\n\n.top-bar {\n  background-color: #333; }\n  .top-bar ul {\n    background-color: transparent; }\n  .top-bar .menu-text {\n    color: white; }\n    .top-bar .menu-text a {\n      display: inline; }\n", ""]);
+	exports.push([module.id, "p {\n  color: #777; }\n\n.top-bar {\n  background-color: #333; }\n  .top-bar ul {\n    background-color: transparent; }\n  .top-bar .menu-text {\n    color: white; }\n    .top-bar .menu-text a {\n      display: inline; }\n\n.clock {\n  align-items: center;\n  background-color: #b5d0e2;\n  border: 2px solid #2099e8;\n  border-radius: 50%;\n  display: flex;\n  height: 14rem;\n  justify-content: center;\n  margin: 4rem auto;\n  width: 14rem; }\n\n.clock-text {\n  color: white;\n  font-size: 2.25rem;\n  font-weight: 300; }\n", ""]);
 
 	// exports
 
