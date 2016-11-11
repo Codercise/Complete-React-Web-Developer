@@ -27292,12 +27292,35 @@
 	  displayName: 'Countdown',
 
 	  getInitialState: function getInitialState() {
-	    return { count: 0 };
+	    return {
+	      count: 0,
+	      countDownStatus: 'stopped'
+	    };
 	  },
 	  handleSetCountdown: function handleSetCountdown(seconds) {
 	    this.setState({
-	      count: seconds
+	      count: seconds,
+	      countDownStatus: 'started'
 	    });
+	  },
+	  componentDidUpdate: function componentDidUpdate(prevProps, prevState) {
+	    if (this.state.countDownStatus !== prevState.countDownStatus) {
+	      switch (this.state.countDownStatus) {
+	        case 'started':
+	          this.startTimer();
+	          break;
+	      }
+	    }
+	  },
+	  startTimer: function startTimer() {
+	    var _this = this;
+
+	    this.timer = setInterval(function () {
+	      var newCount = _this.state.count - 1;
+	      _this.setState({
+	        count: newCount >= 0 ? newCount : 0
+	      });
+	    }, 1000);
 	  },
 	  render: function render() {
 	    var count = this.state.count;
