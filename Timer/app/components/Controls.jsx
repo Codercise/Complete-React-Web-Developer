@@ -27,7 +27,7 @@ const Controls = React.createClass({
         <button className="button hollow alert" onClick={this.onStatusChange('stopped')}>
           Clear
         </button>
-      </div> 
+      </div>
     )
   }
 });
