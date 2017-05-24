@@ -30,12 +30,12 @@ const Main = React.createClass({
     } else {
       jQuery('.todo-list ul li').show();
     }
-    
+
     for(var i = 0; i < todoList.length; i++) {
       var itemIndex = i + 1;
       var listItem = jQuery('.todo-list ul li:nth-child('+itemIndex+')');
 
-      if (todoList[i]['name'] === searchTerm) {
+      if (todoList[i]['name'].includes(searchTerm)) {
         if (todoList[i]['completed'] === false) {
           jQuery(listItem).show();
         }

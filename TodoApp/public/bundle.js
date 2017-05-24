@@ -27250,7 +27250,7 @@
 	      var itemIndex = i + 1;
 	      var listItem = jQuery('.todo-list ul li:nth-child(' + itemIndex + ')');
 
-	      if (todoList[i]['name'] === searchTerm) {
+	      if (todoList[i]['name'].includes(searchTerm)) {
 	        if (todoList[i]['completed'] === false) {
 	          jQuery(listItem).show();
 	        }
