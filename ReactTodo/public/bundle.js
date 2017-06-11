@@ -108,7 +108,7 @@
 	$(document).foundation();
 
 	// App CSS
-	__webpack_require__(319);
+	__webpack_require__(320);
 
 	ReactDOM.render(React.createElement(TodoApp, null), document.getElementById('app'));
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
@@ -27545,9 +27545,11 @@
 
 	var React = __webpack_require__(8);
 	var uuid = __webpack_require__(253);
-	var TodoList = __webpack_require__(315);
-	var AddTodo = __webpack_require__(317);
-	var TodoSearch = __webpack_require__(318);
+
+	var TodoAPI = __webpack_require__(315);
+	var TodoList = __webpack_require__(316);
+	var AddTodo = __webpack_require__(318);
+	var TodoSearch = __webpack_require__(319);
 
 	var TodoApp = React.createClass({
 	  displayName: 'TodoApp',
@@ -27556,24 +27558,12 @@
 	    return {
 	      showCompleted: false,
 	      searchText: '',
-	      todos: [{
-	        id: uuid(),
-	        text: "Walk the dog",
-	        completed: false
-	      }, {
-	        id: uuid(),
-	        text: "Clean the yard",
-	        completed: true
-	      }, {
-	        id: uuid(),
-	        text: "Leave mail on porch",
-	        completed: true
-	      }, {
-	        id: uuid(),
-	        text: "Play videogames",
-	        completed: false
-	      }]
+	      todos: TodoAPI.getTodos()
 	    };
+	  },
+
+	  componentDidUpdate: function componentDidUpdate() {
+	    TodoAPI.setTodos(this.state.todos);
 	  },
 
 	  handleAddTodo: function handleAddTodo(text) {
@@ -36027,6 +36017,33 @@
 
 	'use strict';
 
+	var $ = __webpack_require__(7);
+
+	module.exports = {
+	  setTodos: function setTodos(todos) {
+	    if ($.isArray(todos)) {
+	      localStorage.setItem('todos', JSON.stringify(todos));
+	      return todos;
+	    }
+	  },
+	  getTodos: function getTodos() {
+	    var stringTodos = localStorage.getItem('todos');
+	    var todos = [];
+
+	    try {
+	      todos = JSON.parse(stringTodos);
+	    } catch (e) {}
+
+	    return $.isArray(todos) ? todos : [];
+	  }
+	};
+
+/***/ }),
+/* 316 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -36038,7 +36055,7 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var React = __webpack_require__(8);
-	var Todo = __webpack_require__(316);
+	var Todo = __webpack_require__(317);
 
 	var TodoList = function (_React$Component) {
 	  _inherits(TodoList, _React$Component);
@@ -36078,7 +36095,7 @@
 	module.exports = TodoList;
 
 /***/ }),
-/* 316 */
+/* 317 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -36131,7 +36148,7 @@
 	module.exports = Todo;
 
 /***/ }),
-/* 317 */
+/* 318 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36173,7 +36190,7 @@
 	module.exports = AddTodo;
 
 /***/ }),
-/* 318 */
+/* 319 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -36211,16 +36228,16 @@
 	module.exports = TodoSearch;
 
 /***/ }),
-/* 319 */
+/* 320 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(320);
+	var content = __webpack_require__(321);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(322)(content, {});
+	var update = __webpack_require__(323)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -36237,10 +36254,10 @@
 	}
 
 /***/ }),
-/* 320 */
+/* 321 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(321)();
+	exports = module.exports = __webpack_require__(322)();
 	// imports
 
 
@@ -36251,7 +36268,7 @@
 
 
 /***/ }),
-/* 321 */
+/* 322 */
 /***/ (function(module, exports) {
 
 	/*
@@ -36307,7 +36324,7 @@
 
 
 /***/ }),
-/* 322 */
+/* 323 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/*
