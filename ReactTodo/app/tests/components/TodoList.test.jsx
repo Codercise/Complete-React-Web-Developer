@@ -29,4 +29,12 @@ describe('TodoList', () => {
 
     expect(todosComponents.length).toBe(todos.length);
   });
+
+  it('should render 1 todo component for each todo item', () => {
+    var todos = [];
+
+    const todoList = TestUtils.renderIntoDocument(<TodoList todos={todos} />);
+    let $el = $(ReactDOM.findDOMNode(todoList));
+    expect($el.find('.container__message').length).toBe(1);
+  });
 });
